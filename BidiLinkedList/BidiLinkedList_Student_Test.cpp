@@ -89,6 +89,151 @@ TEST(StudentBidiListInt, insertNodesAfter1) {
 }
 
 // Paul Danilin
+TEST(StudentBidiListInt, insertNodeBefore1) {
+    IntBidiList list;
+    list.appendEl(1);
+    list.appendEl(2);
+    list.appendEl(3);
+    list.appendEl(4); // beg
+    list.appendEl(5);
+
+    BidiLinkedList<int>::Node* beg = list.getHeadNode();
+    beg = beg->getNext()->getNext()->getNext();
+
+    beg = list.cutNode(beg);
+
+    IntBidiListNode* start = list.getHeadNode();
+    EXPECT_EQ(start->getValue(), 1);
+    EXPECT_EQ(start->getNext()->getValue(), 2);
+    EXPECT_EQ(start->getNext()->getNext()->getValue(), 3);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getValue(), 5);
+
+    list.insertNodeBefore(nullptr, beg);
+    start = list.getHeadNode();
+    EXPECT_EQ(start->getValue(), 4);
+    EXPECT_EQ(start->getNext()->getValue(), 1);
+    EXPECT_EQ(start->getNext()->getNext()->getValue(), 2);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getValue(), 3);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getNext()->getValue(), 5);
+
+    beg = list.cutNode(beg);
+    start = list.getHeadNode();
+    EXPECT_EQ(start->getValue(), 1);
+    EXPECT_EQ(start->getNext()->getValue(), 2);
+    EXPECT_EQ(start->getNext()->getNext()->getValue(), 3);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getValue(), 5);
+
+    list.insertNodeBefore(list.getLastNode(), beg);
+    start = list.getHeadNode();
+    EXPECT_EQ(start->getValue(), 1);
+    EXPECT_EQ(start->getNext()->getValue(), 2);
+    EXPECT_EQ(start->getNext()->getNext()->getValue(), 3);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getValue(), 4);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getNext()->getValue(), 5);
+
+    beg = list.cutNode(beg);
+    start = list.getHeadNode();
+    EXPECT_EQ(start->getValue(), 1);
+    EXPECT_EQ(start->getNext()->getValue(), 2);
+    EXPECT_EQ(start->getNext()->getNext()->getValue(), 3);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getValue(), 5);
+
+    list.insertNodeBefore(list.getHeadNode()->getNext(), beg);
+    start = list.getHeadNode();
+    EXPECT_EQ(start->getValue(), 1);
+    EXPECT_EQ(start->getNext()->getValue(), 4);
+    EXPECT_EQ(start->getNext()->getNext()->getValue(), 2);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getValue(), 3);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getNext()->getValue(), 5);
+
+    beg = list.cutNode(beg);
+    start = list.getHeadNode();
+    EXPECT_EQ(start->getValue(), 1);
+    EXPECT_EQ(start->getNext()->getValue(), 2);
+    EXPECT_EQ(start->getNext()->getNext()->getValue(), 3);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getValue(), 5);
+
+    list.insertNodeBefore(list.getHeadNode(), beg);
+    start = list.getHeadNode();
+    EXPECT_EQ(start->getValue(), 4);
+    EXPECT_EQ(start->getNext()->getValue(), 1);
+    EXPECT_EQ(start->getNext()->getNext()->getValue(), 2);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getValue(), 3);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getNext()->getValue(), 5);
+}
+
+// Paul Danilin
+TEST(StudentBidiListInt, insertNodesBefore1) {
+    IntBidiList list;
+    list.appendEl(1);
+    list.appendEl(2);
+    list.appendEl(3);
+    list.appendEl(4); // beg
+    list.appendEl(5); // end
+
+    BidiLinkedList<int>::Node* beg = list.getHeadNode();
+    beg = beg->getNext()->getNext()->getNext();
+    BidiLinkedList<int>::Node* end = beg->getNext();
+
+    list.cutNodes(beg, end);
+
+    IntBidiListNode* start = list.getHeadNode();
+    EXPECT_EQ(start->getValue(), 1);
+    EXPECT_EQ(start->getNext()->getValue(), 2);
+    EXPECT_EQ(start->getNext()->getNext()->getValue(), 3);
+
+    list.insertNodesBefore(nullptr, beg, end);
+    start = list.getHeadNode();
+    EXPECT_EQ(start->getValue(), 4);
+    EXPECT_EQ(start->getNext()->getValue(), 5);
+    EXPECT_EQ(start->getNext()->getNext()->getValue(), 1);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getValue(), 2);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getNext()->getValue(), 3);
+
+    list.cutNodes(beg, end);
+    start = list.getHeadNode();
+    EXPECT_EQ(start->getValue(), 1);
+    EXPECT_EQ(start->getNext()->getValue(), 2);
+    EXPECT_EQ(start->getNext()->getNext()->getValue(), 3);
+
+    list.insertNodesBefore(list.getLastNode(), beg, end);
+    start = list.getHeadNode();
+    EXPECT_EQ(start->getValue(), 1);
+    EXPECT_EQ(start->getNext()->getValue(), 2);
+    EXPECT_EQ(start->getNext()->getNext()->getValue(), 4);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getValue(), 5);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getNext()->getValue(), 3);
+
+    list.cutNodes(beg, end);
+    start = list.getHeadNode();
+    EXPECT_EQ(start->getValue(), 1);
+    EXPECT_EQ(start->getNext()->getValue(), 2);
+    EXPECT_EQ(start->getNext()->getNext()->getValue(), 3);
+
+    list.insertNodesBefore(list.getHeadNode()->getNext(), beg, end);
+    start = list.getHeadNode();
+    EXPECT_EQ(start->getValue(), 1);
+    EXPECT_EQ(start->getNext()->getValue(), 4);
+    EXPECT_EQ(start->getNext()->getNext()->getValue(), 5);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getValue(), 2);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getNext()->getValue(), 3);
+
+    list.cutNodes(beg, end);
+    start = list.getHeadNode();
+    EXPECT_EQ(start->getValue(), 1);
+    EXPECT_EQ(start->getNext()->getValue(), 2);
+    EXPECT_EQ(start->getNext()->getNext()->getValue(), 3);
+
+    list.insertNodesBefore(list.getHeadNode(), beg, end);
+    start = list.getHeadNode();
+    EXPECT_EQ(start->getValue(), 4);
+    EXPECT_EQ(start->getNext()->getValue(), 5);
+    EXPECT_EQ(start->getNext()->getNext()->getValue(), 1);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getValue(), 2);
+    EXPECT_EQ(start->getNext()->getNext()->getNext()->getNext()->getValue(), 3);
+}
+
+// Paul Danilin
 TEST(StudentBidiListInt, clear1) {
     IntBidiList list;
     list.appendEl(1);

@@ -1,0 +1,1 @@
+Error: car with plate: t1 has already been in parking lot.

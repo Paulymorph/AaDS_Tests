@@ -1,0 +1,8 @@
+t1 moved 0 times
+t2 moved 1 times
+t3 moved 2 times
+
+Here are all the cars that visited the lot today:
+t1 moved 0 times
+t2 moved 1 times
+t3 moved 2 times

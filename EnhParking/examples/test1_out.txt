@@ -1,0 +1,33 @@
+Parking is full. Car with num: 't16' can't be placed. It's left.
+t01 moved 0 times
+t02 moved 0 times
+t03 moved 0 times
+t04 moved 0 times
+t05 moved 0 times
+t06 moved 0 times
+t07 moved 0 times
+t08 moved 0 times
+t09 moved 0 times
+t10 moved 0 times
+t11 moved 0 times
+t12 moved 0 times
+t13 moved 0 times
+t14 moved 0 times
+t15 moved 0 times
+
+Here are all the cars that visited the lot today:
+t01 moved 0 times
+t02 moved 0 times
+t03 moved 0 times
+t04 moved 0 times
+t05 moved 0 times
+t06 moved 0 times
+t07 moved 0 times
+t08 moved 0 times
+t09 moved 0 times
+t10 moved 0 times
+t11 moved 0 times
+t12 moved 0 times
+t13 moved 0 times
+t14 moved 0 times
+t15 moved 0 times

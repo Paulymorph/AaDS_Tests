@@ -1,0 +1,7 @@
+t1 arrives
+t2 arrives
+t3 arrives
+t1 departs
+t2 departs
+t3 departs
+t3 departs
